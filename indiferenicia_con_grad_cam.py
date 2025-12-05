@@ -76,8 +76,8 @@ with st.sidebar:
 # 📌 INTERFAZ PRINCIPAL
 # =====================================================================
 
-st.title("🩺 Prototipo Clasificador Multiclase con Grad-CAM")
-st.markdown("### *Un toque de cuidado, una vida de diferencia.*") 
+st.title("🩺🌷sentido rosa sv🌷")
+st.markdown("### *🌺🩷Un toque de cuidado, una vida de diferencia.*") 
 
 # --- CARGAR MODELO Y ARQUITECTURA ---
 @st.cache_resource
@@ -223,3 +223,4 @@ if model:
                 st.subheader("Mapa de Calor (Grad-CAM)")
                 st.image(heatmap_image, caption="Región de interés destacada", use_container_width=True)
                 st.info("El mapa de calor (rojo/amarillo) muestra la región más influyente en la decisión de la IA.")
+
