@@ -15,8 +15,8 @@ except ImportError:
     st.stop()
 
 # --- CONFIGURACIÓN ---
-# ¡Asegúrate de que esta ruta sea correcta!
-MODEL_PATH = r"C:\proyecto_cancer_ia\modelo_cancer_mobilenet.pth" 
+# RUTA CORREGIDA: Asume que el modelo está en la misma carpeta que el script.
+MODEL_PATH = "modelo_cancer_mobilenet.pth"
 CLASS_NAMES = ["Benigno", "Maligno", "Normal"] 
 NUM_CLASSES = len(CLASS_NAMES)
 
@@ -48,6 +48,7 @@ with st.sidebar:
             * Sigue un patrón metódico (círculos o líneas verticales) para cubrir toda la mama, desde la axila hasta el esternón.
         * **Alerta:** Reporta a tu médico cualquier bulto, secreción, cambio de textura o dolor que notes.
         """)
+        # 
 
     with tab2:
         st.subheader("2. Lugares de Seguimiento en El Salvador")
@@ -75,14 +76,15 @@ with st.sidebar:
 # 📌 INTERFAZ PRINCIPAL
 # =====================================================================
 
-st.title("🩺🌷sentido rosa sv🌷")
-st.markdown("### *🩷Un toque de cuidado, una vida de diferencia.*") 
+st.title("🩺 Prototipo Clasificador Multiclase con Grad-CAM")
+st.markdown("### *Un toque de cuidado, una vida de diferencia.*") 
 
 # --- CARGAR MODELO Y ARQUITECTURA ---
 @st.cache_resource
 def cargar_modelo(path):
+    # LA RUTA YA ES RELATIVA, AHORA SOLO DEBEMOS COMPROBAR SU EXISTENCIA
     if not os.path.exists(path):
-        st.error("❌ No se encontró el archivo del modelo (.pth).")
+        st.error(f"❌ No se encontró el archivo del modelo (.pth). Asegúrate de que '{path}' esté en la misma carpeta.")
         return None, None
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
